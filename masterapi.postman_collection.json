@@ -1,0 +1,1513 @@
+{
+	"info": {
+		"_postman_id": "bf6888b1-4e7c-4ae3-a660-22644285b50c",
+		"name": "MasterApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10407629"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "loginGuest",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let resp = pm.response.json();",
+									"if(resp.message.code == 200){",
+									"    let accessToken=resp.payload.accessToken;",
+									"    let refreshToken=resp.payload.refreshToken;",
+									"    // update token",
+									"\tpm.environment.set(\"accessToken\",accessToken);",
+									"    pm.environment.set(\"refreshToken\",refreshToken);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"uid\": \"hiKevin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/login/guest",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"login",
+								"guest"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "destroy",
+			"item": [
+				{
+					"name": "destroySimple",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroyOptions",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"where\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"options"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroyID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/:$1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								":$1"
+							],
+							"variable": [
+								{
+									"key": "$1",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroyLimit",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/limit/:$1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"limit",
+								":$1"
+							],
+							"variable": [
+								{
+									"key": "$1",
+									"value": "xcx"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "update",
+			"item": [
+				{
+					"name": "updateSimple",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"update\": {\n        \"nombre\": \"carita0\"\n    },\n    \"where\": {\n        \"nombre\": \"bulkCreate0\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateOptions",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"attr\": {\n        \"nombre\": \"nuevo2\"\n    },\n    \"options\": {\n        \"where\": {\n            \"nombre\": \"bulkCreate2\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"options"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"malta\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/:$1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								":$1"
+							],
+							"variable": [
+								{
+									"key": "$1",
+									"value": "48"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "increment",
+			"item": [
+				{
+					"name": "incrementSimple",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"bulkCreate100\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/increment/:$1/:$2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"increment",
+								":$1",
+								":$2"
+							],
+							"variable": [
+								{
+									"key": "$1",
+									"value": "store"
+								},
+								{
+									"key": "$2",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "incrementOptions",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"attr\": {\n        \"cantidad\": -50\n    },\n    \"options\": {\n        \"where\": {\n            \"nombre\": \"bulkCreate100\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/increment/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"increment",
+								"options"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "util",
+			"item": [
+				{
+					"name": "utilSimple",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"options\": {\n        \"where\": {\n            \"nombre\": \"bulkCreate100\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/:$1/:$2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								":$1",
+								":$2"
+							],
+							"variable": [
+								{
+									"key": "$1",
+									"value": "sum"
+								},
+								{
+									"key": "$2",
+									"value": "cantidad"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "findByPk",
+			"item": [
+				{
+					"name": "findByPkSimple",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/:$1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								":$1"
+							],
+							"variable": [
+								{
+									"key": "$1",
+									"value": "60"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByPkOptions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"include\": {\n        \"all\": true,\n        \"nested\": true\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/:$1/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								":$1",
+								"options"
+							],
+							"variable": [
+								{
+									"key": "$1",
+									"value": "60"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "findAll",
+			"item": [
+				{
+					"name": "findAllSimple",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"bulkCreate100\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAllOptions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"where\": {\n        \"nombre\": \"bulkCreate100\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"options"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "count",
+			"item": [
+				{
+					"name": "countSimple",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"bulkCreate100\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/count",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "countOptions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"where\": {\n        \"nombre\": \"bulkCreate100\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/count/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"count",
+								"options"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "findAndCountAll",
+			"item": [
+				{
+					"name": "findAndCountAllSimple",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"bulkCreate100\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/search",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAndCountAllIncludeAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"bulkCreate100\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/search/all",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"search",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAndCountAllOptions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"where\": {\n        \"nombre\": \"bulkCreate100\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/search/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"search",
+								"options"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAndCountAllPaginated",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"bulkCreate100\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/search/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"search",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAndCountAllPaginatedIncludeAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"bulkCreate100\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/search/all/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"search",
+								"all",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "findOne",
+			"item": [
+				{
+					"name": "findOneSimple",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"bulkCreate100\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/searchFirst",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"searchFirst"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOneOptions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"where\": {\n        \"nombre\": \"bulkCreate100\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/searchFirst/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"searchFirst",
+								"options"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "describe",
+			"item": [
+				{
+					"name": "describe",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/describe",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"describe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "querySQL",
+			"item": [
+				{
+					"name": "querySQLSimple",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sql\": \"SELECT :idCat, nombre, cantidad FROM :Cat WHERE :Cat.nombre = 'bulkCreate100'\",\n    \"replacements\": {\n        \"Cat\": [\n            \"public.Categoria\",\n            true\n        ],\n        \"idCat\": \"\\\"idCategoria\\\"\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/sql",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "querySQLOption",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sql\": \"SELECT :idCat, nombre, cantidad FROM public.:Cat AS :Cat WHERE :Cat.nombre = 'bulkCreate100'\",\n    \"replacements\": {\n        \"Cat\": \"\\\"Categoria\\\"\",\n        \"idCat\": \"\\\"idCategoria\\\"\"\n    },\n    \"options\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/sql/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sql",
+								"options"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sp",
+			"item": [
+				{
+					"name": "funcSimple",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/sp/func/:$0",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sp",
+								"func",
+								":$0"
+							],
+							"variable": [
+								{
+									"key": "$0",
+									"value": "name",
+									"description": "nombre de funcion"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "funcOptions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"request\": {},\n    \"options\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/sp/func/:$0/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sp",
+								"func",
+								":$0",
+								"options"
+							],
+							"variable": [
+								{
+									"key": "$0",
+									"value": "name",
+									"description": "nombre de funcion"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "callSimple",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/sp/call/:$0",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sp",
+								"call",
+								":$0"
+							],
+							"variable": [
+								{
+									"key": "$0",
+									"value": "name",
+									"description": "nombre de funcion"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "callOptions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"request\": {},\n    \"options\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/sp/call/:$0/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sp",
+								"call",
+								":$0",
+								"options"
+							],
+							"variable": [
+								{
+									"key": "$0",
+									"value": "name",
+									"description": "nombre de funcion"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "create",
+			"item": [
+				{
+					"name": "createSimple",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numero\": 434,\n    \"nombre\": \"maria\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createOptions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"attr\": {\n        \"numero\": 434,\n        \"nombre\": \"maria\"\n    },\n    \"options\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"options"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "findOrCreate",
+			"item": [
+				{
+					"name": "findOrCreateSimple",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"where\": {\n        \"idUser\": 23,\n        \"idTypeUser\": 5,\n        \"numero\": 434,\n        \"score\": 14,\n        \"altura\": 85,\n        \"nombre\": \"mjuan\",\n        \"apellido\": \"caba\",\n        \"activo\": true,\n        \"level\": 1\n    },\n    \"defaults\": {\n        \"idUser\": 23,\n        \"idTypeUser\": 5,\n        \"numero\": 434,\n        \"score\": 14,\n        \"altura\": 85,\n        \"nombre\": \"mjuan\",\n        \"apellido\": \"caba\",\n        \"activo\": true,\n        \"level\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/searchOrCreate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"searchOrCreate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOrCreateOptions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"where\": {\n        \"nombre\": \"mjuan\"\n    },\n    \"defaults\": {\n        \"idUser\": 23,\n        \"idTypeUser\": 5,\n        \"numero\": 434,\n        \"score\": 14,\n        \"altura\": 85,\n        \"apellido\": \"caba\",\n        \"activo\": true,\n        \"level\": 1\n    },\n    \"include\": {\n        \"all\": true,\n        \"nested\": true\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/searchOrCreate/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"searchOrCreate",
+								"options"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bulkCreate",
+			"item": [
+				{
+					"name": "bulkCreateSimple",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"nombre\": \"bulkCreate100\",\n        \"cantidad\": 12\n    },\n    {\n        \"nombre\": \"bulkCreate100\",\n        \"cantidad\": 45\n    },\n    {\n        \"nombre\": \"bulkCreate100\",\n        \"cantidad\": 76\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/bulkCreate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"bulkCreate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bulkCreateOptions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"records\": [\n        {\n            \"nombre\": \"bulkCreate0\",\n            \"cantidad\": 12\n        },\n        {\n            \"nombre\": \"bulkCreate1\",\n            \"cantidad\": 45\n        },\n        {\n            \"nombre\": \"bulkCreate2\",\n            \"cantidad\": 76\n        }\n    ],\n    \"options\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{table}}/bulkCreate/options",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{table}}",
+								"bulkCreate",
+								"options"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "index",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "{{accessToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}",
+					"host": [
+						"{{host}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

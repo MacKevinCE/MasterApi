@@ -1,0 +1,52 @@
+{
+  "name": "masterapi",
+  "version": "2.4.1",
+  "private": true,
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
+  "main": "app",
+  "author": {
+    "name": "Mac Kevin Cabanillas Encarnación",
+    "email": "mac.kevin.c.e@gmail.com",
+    "url": "https://www.linkedin.com/in/mackevince/"
+  },
+  "scripts": {
+    "start": "node ./dist/app.js",
+    "nodemon": "nodemon ./dist/app.js"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.5",
+    "cors": "~2.8.5",
+    "dotenv": "~10.0.0",
+    "express": "~4.17.1",
+    "express-validator": "~6.14.0",
+    "http-errors": "~1.8.0",
+    "jsonwebtoken": "~8.5.1",
+    "morgan": "~1.10.0",
+    "node-fetch": "~2.6.6",
+    "pg": "~8.7.3",
+    "pg-hstore": "~2.3.4",
+    "pug": "~3.0.2",
+    "sequelize": "~6.9.0",
+    "socket.io": "~4.3.2",
+    "uuid": "~8.3.2"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/cors": "^2.8.12",
+    "@types/debug": "^4.1.7",
+    "@types/express-session": "^1.17.4",
+    "@types/http-errors": "^1.8.1",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/morgan": "^1.9.3",
+    "@types/node-fetch": "^2.5.12",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "eslint": "^8.18.0",
+    "nodemon": "^2.0.15",
+    "sequelize-auto": "^0.8.5",
+    "typescript": "^4.4.4"
+  }
+}

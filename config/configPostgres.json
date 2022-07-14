@@ -1,0 +1,14 @@
+{
+  "host": "ec2-52-48-159-67.eu-west-1.compute.amazonaws.com",
+  "database": "d9fmmgtt0bfahp",
+  "username": "pzuzwvjbgezsuu",
+  "password": "a9e1aa3694e87eab867e72c4d3d4904ea9f3b32b684c29179bea684270c6a06d",
+  "dialect": "postgres",
+  "port": 5432,
+  "dialectOptions": {
+    "ssl": {
+      "require": true,
+      "rejectUnauthorized": false
+    }
+  }
+}

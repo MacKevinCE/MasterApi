@@ -1,0 +1,22 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="nodemon" type="js.build_tools.npm" nameIsGenerated="true">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="nodemon" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs>
+      <env name="COOKIE_SECRET" value="123456789-secret" />
+      <env name="JWT_ACCESS_SECRET" value="123456789-secret" />
+      <env name="JWT_REFRESH_SECRET" value="secret-123456789" />
+      <env name="JWT_TIME" value="15h" />
+      <env name="PORT" value="8000" />
+      <env name="SEAL_SECRET" value="123456789" />
+      <env name="SIGN_SECRET" value="123456789" />
+    </envs>
+    <method v="2">
+      <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/tsconfig.json" />
+    </method>
+  </configuration>
+</component>
